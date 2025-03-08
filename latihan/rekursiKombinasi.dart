@@ -1,4 +1,4 @@
-void GenerateCombination(List<String> karakter, int panjang,
+void GenerateKombinasi(List<String> karakter, int panjang,
     {String prefix = ''}) {
   if (panjang == 0) {
     print(prefix);
@@ -6,11 +6,11 @@ void GenerateCombination(List<String> karakter, int panjang,
   }
 
   for (int i = 0; i < karakter.length; i++) {
-    GenerateCombination(karakter, panjang - 1, prefix: prefix + karakter[i]);
+    GenerateKombinasi(karakter, panjang - 1, prefix: prefix + karakter[i]);
   }
 }
 
-String generateLetters(int n, [String current = 'a']) {
+String generateHuruf(int n, [String current = 'a']) {
   if (current.length > 1) return '';
 
   if (n == 1) {
@@ -19,14 +19,14 @@ String generateLetters(int n, [String current = 'a']) {
 
   return current +
       ' ' +
-      generateLetters(n - 1, String.fromCharCode(current.codeUnitAt(0) + 1));
+      generateHuruf(n - 1, String.fromCharCode(current.codeUnitAt(0) + 1));
 }
 
 void main() {
   List<String> karakter = [];
   int panjang = 4;
-  generateLetters(panjang).split(' ').forEach((element) {
+  generateHuruf(panjang).split(' ').forEach((element) {
     karakter.add(element);
   });
-  GenerateCombination(karakter, panjang);
+  GenerateKombinasi(karakter, panjang);
 }
