@@ -1,3 +1,5 @@
+import 'dart:io';
+
 void GenerateKombinasi(List<String> karakter, int panjang,
     {String prefix = ''}) {
   if (panjang == 0) {
@@ -24,9 +26,15 @@ String generateHuruf(int n, [String current = 'a']) {
 
 void main() {
   List<String> karakter = [];
-  int panjang = 4;
+  stdout.write('Masukkan panjang karakter: ');
+  int panjang = int.parse(stdin.readLineSync() ?? "");
+
+  DateTime start = DateTime.now();
   generateHuruf(panjang).split(' ').forEach((element) {
     karakter.add(element);
   });
   GenerateKombinasi(karakter, panjang);
+  DateTime end = DateTime.now();
+
+  print("Waktu eksekusi: ${end.difference(start).inMilliseconds} ms");
 }

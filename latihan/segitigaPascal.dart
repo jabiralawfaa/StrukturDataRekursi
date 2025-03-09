@@ -15,9 +15,9 @@ void displayPascalTriangle(int barisan) {
     String output = '';
     for (int j = 0; j <= i; j++) {
       String pascalStr = pascal(i, j).toString();
-      output += pascalStr;
+      output += pascalStr + ' ';
     }
     int padding = barisan - i;
-    print("barisan $i = ${" " * padding} $output");
+    print("barisan ${i + 1} = ${" " * padding} $output");
   }
 }
